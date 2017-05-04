@@ -53,3 +53,57 @@ var rex = [
 
        null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  
 ];
+
+var blank = [
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,
+
+       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  
+];
+
+var insight = [
+    '#2558aa','#2558aa','#2558aa' ,'#2558aa','#2558aa','#2558aa','#2558aa','#2558aa',
+
+    '#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+
+    '#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+
+    '#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+
+    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa',
+
+    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa',
+
+    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa',
+
+    '#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa'
+];
+
+var accello = [
+    '#595959','#595959','#595959',   null  ,   null  ,   null  ,   null  ,   null  ,
+
+    '#595959','#898989','#595959','#898989',   null  ,   null  ,   null  ,   null  ,
+
+    '#595959','#595959','#595959','#898989','#898989',   null  ,   null  ,   null  ,
+
+    '#595959','#898989',   null  ,   null  ,'#898989',   null  ,   null  ,   null  ,
+
+    '#595959','#898989',   null  ,   null  ,'#898989','#898989',   null  ,   null  ,
+
+    '#595959','#898989',   null  ,   null  ,   null  ,'#898989','#595959','#434343',
+
+    '#595959','#898989',   null  ,   null  ,   null  ,   null  ,'#434343',   null  ,
+
+    '#434343','#434343','#434343',   null  ,   null  ,   null  ,'#434343','#434343'
+];
