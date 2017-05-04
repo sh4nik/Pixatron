@@ -51,7 +51,7 @@ var rex = [
 
        null  ,   null  ,   null  ,'#ff6600','#ff9f5f',   null  ,   null  ,   null  ,
 
-       null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  ,   null  
+    '#595959','#595959',   null  ,'#595959','#595959',   null  ,'#595959','#595959'
 ];
 
 var blank = [
@@ -75,17 +75,17 @@ var blank = [
 var insight = [
     '#2558aa','#2558aa','#2558aa' ,'#2558aa','#2558aa','#2558aa','#2558aa','#2558aa',
 
-    '#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+    '#2558aa','#dedede','#dedede','#dedede','#2558aa','#2558aa','#2558aa','#2558aa',
 
-    '#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+    '#2558aa','#dedede','#2558aa','#dedede','#2558aa','#2558aa','#2558aa','#2558aa',
 
-    '#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa','#2558aa','#2558aa','#2558aa',
+    '#2558aa','#dedede','#dedede','#dedede','#2558aa','#2558aa','#2558aa','#2558aa',
 
-    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#fdfdfd','#fdfdfd','#2558aa',
+    '#2558aa','#2558aa','#dedede','#2558aa','#dedede','#dedede','#dedede','#2558aa',
 
-    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa',
+    '#2558aa','#2558aa','#dedede','#2558aa','#dedede','#2558aa','#dedede','#2558aa',
 
-    '#2558aa','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa','#fdfdfd','#2558aa',
+    '#2558aa','#2558aa','#dedede','#2558aa','#dedede','#2558aa','#dedede','#2558aa',
 
     '#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa','#2558aa'
 ];
@@ -93,17 +93,17 @@ var insight = [
 var accello = [
     '#595959','#595959','#595959',   null  ,   null  ,   null  ,   null  ,   null  ,
 
-    '#595959','#898989','#595959','#898989',   null  ,   null  ,   null  ,   null  ,
+    '#595959','#7142f4','#595959','#7142f4',   null  ,   null  ,   null  ,   null  ,
 
-    '#595959','#595959','#595959','#898989','#898989',   null  ,   null  ,   null  ,
+    '#595959','#595959','#595959','#7142f4','#7142f4',   null  ,   null  ,   null  ,
 
-    '#595959','#898989',   null  ,   null  ,'#898989',   null  ,   null  ,   null  ,
+    '#595959','#7142f4',   null  ,   null  ,'#7142f4',   null  ,   null  ,   null  ,
 
-    '#595959','#898989',   null  ,   null  ,'#898989','#898989',   null  ,   null  ,
+    '#595959','#7142f4',   null  ,   null  ,'#7142f4','#7142f4',   null  ,   null  ,
 
-    '#595959','#898989',   null  ,   null  ,   null  ,'#898989','#595959','#595959',
+    '#595959','#7142f4',   null  ,   null  ,   null  ,'#7142f4','#595959','#595959',
 
-    '#595959','#898989',   null  ,   null  ,   null  ,'#898989','#434343',   null  ,
+    '#595959','#7142f4',   null  ,   null  ,   null  ,'#7142f4','#434343',   null  ,
 
     '#434343','#434343','#434343',   null  ,   null  ,   null  ,'#595959','#595959'
 ];
