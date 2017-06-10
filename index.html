@@ -3,6 +3,9 @@
 <head>
     <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
     <script src="scripts/data.js"></script>
+    <script src="scripts/Morph.js"></script>
+    <script src="scripts/MorphEffect.js"></script>
+    <script src="scripts/Pixatron.js"></script>
     <script src="scripts/main.js"></script>
 
     <style>
@@ -11,8 +14,8 @@
         }
 
         .workspace {
-            width: 200px;
-            height: 200px;
+            width: 50px;
+            height: 50px;
             margin-left: 100px;
             margin-right: 60px;
             margin-top: 100px;
@@ -22,27 +25,32 @@
 
     <script type="text/javascript">
         setTimeout(function () {
-            createMatrix("workspace1", rex);
-            createMatrix("workspace2", insight);
-            createMatrix("workspace3", insightd);
-            createMatrix("workspace4", accello);
-        }, 500);
+
+            var pixatron1 = new Pixatron();
+            pixatron1.createAndDraw("workspace1", rex);
+
+            var pixatron2 = new Pixatron();
+            pixatron2.createAndDraw("workspace2", insight);
+
+            var pixatron3 = new Pixatron();
+            pixatron3.createAndDraw("workspace3", insightd);
+
+            var pixatron4 = new Pixatron();
+            pixatron4.createAndDraw("workspace4", accello);
+
+            setTimeout(function() {
+                pixatron1.morph(MorphEffect.BLACK_OUT_UP_AND_DOWN);
+                pixatron2.morph(MorphEffect.BLACK_OUT_DOWN_TO_UP);
+                pixatron3.morph(MorphEffect.BLACK_OUT_UP_TO_DOWN);
+                pixatron4.morph(MorphEffect.REPLACE_UP_AND_DOWN, rex);
+            }, 1000);
+
+        }, 0);
     </script>
 
 </head>
 
 <body>
-
-    <!--VirtusaPolaris presents: GTO-E2E-X!-->
-    <!--InsightLive-->
-    <!--REX-->
-    <!--Accello-->
-    <!--Tempo-->
-    <!--:powered by:-->
-    <!--Beacon-->
-    <!--NyQL-->
-    <!--Manduka-->
-    <!--MetatronJS-->
 
     <div id="workspace1" class="workspace"></div>
     <div id="workspace2" class="workspace"></div>
