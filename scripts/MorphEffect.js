@@ -56,6 +56,16 @@ var MorphEffect = {
             this.index++;
             return this.index < sourceMorphData.length / 2;
         };
+    },
+	
+	REPLACE_MIDDLE_OUT : function () {
+        this.index = 0;
+        this.func = function (sourceMorphData, targetMorphData) {
+            sourceMorphData[(sourceMorphData.length / 2) + this.index] = targetMorphData[(sourceMorphData.length / 2) + this.index];
+			sourceMorphData[(sourceMorphData.length / 2) - this.index - 1] = targetMorphData[(sourceMorphData.length / 2) - this.index - 1];
+            this.index++;
+            return this.index < sourceMorphData.length / 2;
+        };
     }
 
 };
