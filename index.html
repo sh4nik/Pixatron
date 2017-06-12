@@ -3,7 +3,7 @@
 <head>
     <script src="scripts/easeljs-0.8.2.min.js"></script>
     <script src="scripts/data.js"></script>
-    <script src="scripts/Morph.js"></script>
+    <script src="scripts/MorphHandler.js"></script>
     <script src="scripts/MorphEffect.js"></script>
     <script src="scripts/Pixatron.js"></script>
 
@@ -26,7 +26,7 @@
         setTimeout(function () {
 
             var pixatron1 = new Pixatron();
-            pixatron1.createAndDraw("workspace1", rex);
+            pixatron1.create("workspace1");
 
             var pixatron2 = new Pixatron();
             pixatron2.createAndDraw("workspace2", insight);
@@ -42,7 +42,10 @@
                 pixatron3.morph(MorphEffect.BLACK_OUT_UP_TO_DOWN);
                 setTimeout(function() {
                     pixatron1.morph(MorphEffect.REPLACE_MIDDLE_OUT, accello);
-                    pixatron4.morph(MorphEffect.REPLACE_UP_AND_DOWN, rex);
+                    setTimeout(function() {
+                        pixatron4.morph(MorphEffect.REPLACE_MIDDLE_OUT, creeper);
+                        pixatron4.morph(MorphEffect.REPLACE_UP_AND_DOWN, rex);
+                    }, 500);
                 }, 1000);
             }, 1000);
 

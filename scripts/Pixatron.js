@@ -8,6 +8,8 @@ var Pixatron = function () {
     this.padding = 0.08;
     this.cellRounding = 0.08;
     this.data = new Array(this.xLength * this.yLength).fill(null);
+    this.morphHandler = new MorphHandler(this);
+    this.morphQueue = [];
     this.stage;
     this.containerId;
     this.canvasName;
@@ -68,7 +70,12 @@ var Pixatron = function () {
     };
 
     this.morph = function(morphEffect, targetMorphData) {
-        Morph(this, new morphEffect(), targetMorphData);
+        this.morphQueue.push({
+            morphEffect: new morphEffect(),
+            targetMorphData: targetMorphData ? targetMorphData.slice(0) : targetMorphData
+        });
+        if(this.morphQueue.length == 1) {
+            this.morphHandler.run();
+        }
     };
-
 };
