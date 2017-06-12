@@ -7,7 +7,7 @@ var Pixatron = function () {
     this.yLength = 8;
     this.padding = 0.08;
     this.cellRounding = 0.08;
-    this.data = [];
+    this.data = new Array(this.xLength * this.yLength).fill(null);
     this.stage;
     this.containerId;
     this.canvasName;
