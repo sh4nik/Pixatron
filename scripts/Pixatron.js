@@ -1,4 +1,5 @@
 "use strict";
+
 var Pixatron = function () {
 
     createjs.Ticker.setFPS(64);

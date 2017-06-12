@@ -3,17 +3,17 @@
 var MorphHandler = function(pixatron, morphEffect, morphData) {
 
     this.run = function() {
-        createjs.Ticker.addEventListener("tick", tick);
+        createjs.Ticker.addEventListener("tick", _tick);
     };
 
-    function tick() {
+    function _tick() {
         if(pixatron.morphQueue.length === 0) {
-            createjs.Ticker.removeEventListener("tick", tick);
+            createjs.Ticker.removeEventListener("tick", _tick);
             return;
         }
         pixatron.stage.removeAllChildren();
         pixatron.stage.update();
-        var currentMorph = pixatron.morphQueue[0];
+        let currentMorph = pixatron.morphQueue[0];
         if(!currentMorph.morphEffect.func(pixatron.data, currentMorph.targetMorphData, pixatron)) {
             pixatron.morphQueue.shift();
         }
