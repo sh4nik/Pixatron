@@ -2,69 +2,80 @@
 
 var MorphEffect = {
 
-    BLACK_OUT_UP_TO_DOWN : function () {
-        this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[this.index] = null;
-            this.index++;
-            return this.index < sourceMorphData.length;
+    PAUSE: function () {
+        this.ticksToPause;
+        this.func = function (pixatronData, morphData) {
+            if (this.ticksToPause === undefined) {
+                this.ticksToPause = morphData;
+            }
+            this.ticksToPause--;
+            return this.ticksToPause > 0;
         };
     },
 
-    BLACK_OUT_DOWN_TO_UP : function () {
+    BLACK_OUT_UP_TO_DOWN: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[sourceMorphData.length - 1 - this.index] = null;
+        this.func = function (pixatronData, morphData) {
+            pixatronData[this.index] = null;
             this.index++;
-            return this.index < sourceMorphData.length;
+            return this.index < pixatronData.length;
         };
     },
 
-    BLACK_OUT_UP_AND_DOWN : function () {
+    BLACK_OUT_DOWN_TO_UP: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[this.index] = null;
-            sourceMorphData[sourceMorphData.length - 1 - this.index] = null;
+        this.func = function (pixatronData, morphData) {
+            pixatronData[pixatronData.length - 1 - this.index] = null;
             this.index++;
-            return this.index < sourceMorphData.length / 2;
+            return this.index < pixatronData.length;
         };
     },
 
-    REPLACE_UP_TO_DOWN : function () {
+    BLACK_OUT_UP_AND_DOWN: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[this.index] = targetMorphData[this.index];
+        this.func = function (pixatronData, morphData) {
+            pixatronData[this.index] = null;
+            pixatronData[pixatronData.length - 1 - this.index] = null;
             this.index++;
-            return this.index < sourceMorphData.length;
+            return this.index < pixatronData.length / 2;
         };
     },
 
-    REPLACE__DOWN_TO_UP : function () {
+    REPLACE_UP_TO_DOWN: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[sourceMorphData.length - 1 - this.index] = targetMorphData[sourceMorphData.length - 1 - this.index];
+        this.func = function (pixatronData, morphData) {
+            pixatronData[this.index] = morphData[this.index];
             this.index++;
-            return this.index < sourceMorphData.length;
+            return this.index < pixatronData.length;
         };
     },
 
-    REPLACE_UP_AND_DOWN : function () {
+    REPLACE_DOWN_TO_UP: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[this.index] = targetMorphData[this.index];
-            sourceMorphData[sourceMorphData.length - 1 - this.index] = targetMorphData[sourceMorphData.length - 1 - this.index];
+        this.func = function (pixatronData, morphData) {
+            pixatronData[pixatronData.length - 1 - this.index] = morphData[pixatronData.length - 1 - this.index];
             this.index++;
-            return this.index < sourceMorphData.length / 2;
+            return this.index < pixatronData.length;
         };
     },
-	
-	REPLACE_MIDDLE_OUT : function () {
+
+    REPLACE_UP_AND_DOWN: function () {
         this.index = 0;
-        this.func = function (sourceMorphData, targetMorphData) {
-            sourceMorphData[(sourceMorphData.length / 2) + this.index] = targetMorphData[(sourceMorphData.length / 2) + this.index];
-			sourceMorphData[(sourceMorphData.length / 2) - this.index - 1] = targetMorphData[(sourceMorphData.length / 2) - this.index - 1];
+        this.func = function (pixatronData, morphData) {
+            pixatronData[this.index] = morphData[this.index];
+            pixatronData[pixatronData.length - 1 - this.index] = morphData[pixatronData.length - 1 - this.index];
             this.index++;
-            return this.index < sourceMorphData.length / 2;
+            return this.index < pixatronData.length / 2;
+        };
+    },
+
+    REPLACE_MIDDLE_OUT: function () {
+        this.index = 0;
+        this.func = function (pixatronData, morphData) {
+            pixatronData[(pixatronData.length / 2) + this.index] = morphData[(pixatronData.length / 2) + this.index];
+            pixatronData[(pixatronData.length / 2) - this.index - 1] = morphData[(pixatronData.length / 2) - this.index - 1];
+            this.index++;
+            return this.index < pixatronData.length / 2;
         };
     }
 

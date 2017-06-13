@@ -51,11 +51,11 @@ var Pixatron = function () {
                     cell.graphics
                         .beginFill(this.data[inputOffset])
                         .drawRoundRect(
-                            (x * this.cellWidth) + this.cellPadding,
-                            (y * this.cellHeight) + this.cellPadding,
-                            this.cellWidth - (this.cellPadding * 2),
-                            this.cellHeight - (this.cellPadding * 2),
-                            this.cellWidth * this.cellRounding
+                        (x * this.cellWidth) + this.cellPadding,
+                        (y * this.cellHeight) + this.cellPadding,
+                        this.cellWidth - (this.cellPadding * 2),
+                        this.cellHeight - (this.cellPadding * 2),
+                        this.cellWidth * this.cellRounding
                         );
                     this.stage.addChild(cell);
                 }
@@ -70,13 +70,20 @@ var Pixatron = function () {
         this.draw(data);
     };
 
-    this.morph = function(morphEffect, targetMorphData) {
+    this.morph = function (morphEffect, morphData, ticksToPause) {
         this.morphQueue.push({
             morphEffect: new morphEffect(),
-            targetMorphData: targetMorphData ? targetMorphData.slice(0) : targetMorphData
+            morphData: morphData ? morphData.slice(0) : morphData
         });
-        if(this.morphQueue.length == 1) {
+        if (this.morphQueue.length == 1) {
             this.morphHandler.run();
+        }
+
+        if (ticksToPause) {
+            this.morphQueue.push({
+                morphEffect: new MorphEffect.PAUSE(),
+                morphData: ticksToPause
+            });
         }
     };
 };
