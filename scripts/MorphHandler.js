@@ -1,6 +1,6 @@
 "use strict";
 
-var MorphHandler = function (pixatron, morphEffect, morphData) {
+var MorphHandler = function (pixatron) {
 
     this.run = function () {
         createjs.Ticker.addEventListener("tick", _tick);
@@ -11,14 +11,14 @@ var MorphHandler = function (pixatron, morphEffect, morphData) {
             createjs.Ticker.removeEventListener("tick", _tick);
             return;
         }
-        pixatron.stage.removeAllChildren();
-        pixatron.stage.update();
+        pixatron.clean();
+        pixatron.update();
         let currentMorph = pixatron.morphQueue[0];
         if (!currentMorph.morphEffect.func(pixatron.data, currentMorph.morphData, pixatron)) {
             pixatron.morphQueue.shift();
         }
         pixatron.draw();
-        pixatron.stage.update();
+        pixatron.update();
     };
 
 };

@@ -86,4 +86,12 @@ var Pixatron = function () {
             });
         }
     };
+
+    this.clean = function() {
+        this.stage.removeAllChildren();
+    };
+
+    this.update = function() {
+        this.stage.update();
+    };
 };
