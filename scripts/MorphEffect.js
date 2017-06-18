@@ -51,6 +51,25 @@ var MorphEffect = {
         };
     },
 
+    BLACK_OUT_MIDDLE_OUT: function () {
+        this.index;
+        this.func = function (pixatronData, morphData) {
+
+            if(this.index === undefined) {
+                this.index = (pixatronData.length * pixatronData[0].length) / 2;
+            }
+
+            var y = Math.floor(this.index / pixatronData.length);
+            var x = this.index % pixatronData[y].length;
+
+            pixatronData[y][x] = null;
+            pixatronData[pixatronData.length - 1 - y][pixatronData[y].length - 1 - x] = null;
+
+            this.index--;
+            return this.index >= 0;
+        };
+    },
+
     REPLACE_UP_TO_DOWN: function () {
         this.index = 0;
         this.func = function (pixatronData, morphData) {
@@ -88,6 +107,25 @@ var MorphEffect = {
 
             this.index++;
             return this.index < (pixatronData.length * pixatronData[y].length) / 2;
+        };
+    },
+
+    REPLACE_MIDDLE_OUT: function () {
+        this.index;
+        this.func = function (pixatronData, morphData) {
+
+            if(this.index === undefined) {
+                this.index = (pixatronData.length * pixatronData[0].length) / 2;
+            }
+
+            var y = Math.floor(this.index / pixatronData.length);
+            var x = this.index % pixatronData[y].length;
+
+            pixatronData[y][x] = morphData[y][x];
+            pixatronData[pixatronData.length - 1 - y][pixatronData[y].length - 1 - x] = morphData[pixatronData.length - 1 - y][pixatronData[y].length - 1 - x];
+
+            this.index--;
+            return this.index >= 0;
         };
     },
 

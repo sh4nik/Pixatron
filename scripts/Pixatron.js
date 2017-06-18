@@ -2,7 +2,7 @@
 
 var Pixatron = function (options) {
 
-    createjs.Ticker.setFPS(16);
+    createjs.Ticker.setFPS(options.fps || 30);
 
     this.xLength = options.width;
     this.yLength = options.height;

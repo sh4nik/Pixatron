@@ -27,19 +27,20 @@
 
             var pixatron = new Pixatron({
                 width: 8,
-                height: 8
+                height: 8,
+                fps: 64
             });
 
             pixatron.create("workspace");
 
-            pixatron.morph(MorphEffect.REPLACE_UP_AND_DOWN, insight);
-            pixatron.morph(MorphEffect.REPLACE_DOWN_TO_UP, insightd, 32);
+            pixatron.morph(MorphEffect.REPLACE_DOWN_TO_UP, insight);
+            pixatron.morph(MorphEffect.REPLACE_UP_TO_DOWN, insightd, 32);
             pixatron.morph(MorphEffect.BLACK_OUT_UP_TO_DOWN);
-            pixatron.morph(MorphEffect.REPLACE_UP_AND_DOWN, accello, 32);
-            pixatron.morph(MorphEffect.REPLACE_UP_AND_DOWN, creeper, 32);
+            pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, accello, 32);
+            pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, creeper, 32);
             pixatron.morph(MorphEffect.REPLACE_UP_TO_DOWN, face);
-			pixatron.morph(MorphEffect.REPLACE_UP_AND_DOWN, rex, 128);
-            pixatron.morph(MorphEffect.BLACK_OUT_DOWN_TO_UP);
+			pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, rex, 128);
+            pixatron.morph(MorphEffect.BLACK_OUT_MIDDLE_OUT);
 
         }, 0);
     </script>
