@@ -1,14 +1,14 @@
 "use strict";
 
-var Pixatron = function () {
+var Pixatron = function (options) {
 
-    createjs.Ticker.setFPS(64);
+    createjs.Ticker.setFPS(16);
 
-    this.xLength = 8;
-    this.yLength = 8;
+    this.xLength = options.width;
+    this.yLength = options.height;
     this.padding = 0.08;
     this.cellRounding = 0.08;
-    this.data = new Array(this.xLength * this.yLength).fill(null);
+    this.data;
     this.morphHandler = new MorphHandler(this);
     this.morphQueue = [];
     this.stage;
@@ -21,6 +21,8 @@ var Pixatron = function () {
     this.cellPadding;
 
     this.create = function (containerId) {
+
+        this.data = this.getNullDataSet();
 
         this.containerId = containerId;
         this.canvasName = this.containerId + '_canvas';
@@ -41,23 +43,23 @@ var Pixatron = function () {
 
     this.draw = function (data) {
 
-        this.data = data ? data.slice(0) : this.data;
+        this.data = data ? this.normalizeData(data) : this.data;
 
-        for (var y = 0; y < this.yLength; y++) {
-            for (var x = 0; x < this.xLength; x++) {
-                var inputOffset = (y * this.yLength) + x;
-                if (this.data[inputOffset]) {
-                    var cell = new createjs.Shape();
-                    cell.graphics
-                        .beginFill(this.data[inputOffset])
-                        .drawRoundRect(
-                        (x * this.cellWidth) + this.cellPadding,
-                        (y * this.cellHeight) + this.cellPadding,
-                        this.cellWidth - (this.cellPadding * 2),
-                        this.cellHeight - (this.cellPadding * 2),
-                        this.cellWidth * this.cellRounding
-                        );
-                    this.stage.addChild(cell);
+        for(var y = 0; y < this.data.length; y++) {
+            var row = this.data[y];
+            for(var x = 0; x < row.length; x++) {
+                    if (row[x]) {
+                        var cell = new createjs.Shape();
+                        cell.graphics
+                            .beginFill(row[x])
+                            .drawRoundRect(
+                            (x * this.cellWidth) + this.cellPadding,
+                            (y * this.cellHeight) + this.cellPadding,
+                            this.cellWidth - (this.cellPadding * 2),
+                            this.cellHeight - (this.cellPadding * 2),
+                            this.cellWidth * this.cellRounding
+                            );
+                        this.stage.addChild(cell);
                 }
             }
         }
@@ -71,9 +73,10 @@ var Pixatron = function () {
     };
 
     this.morph = function (morphEffect, morphData, ticksToPause) {
+
         this.morphQueue.push({
             morphEffect: new morphEffect(),
-            morphData: morphData ? morphData.slice(0) : morphData
+            morphData: morphData ? this.normalizeData(morphData) : morphData
         });
         if (this.morphQueue.length == 1) {
             this.morphHandler.run();
@@ -85,6 +88,28 @@ var Pixatron = function () {
                 morphData: ticksToPause
             });
         }
+    };
+
+    this.getNullDataSet = function() {
+        var nullDataSet = [];
+        for(var y = 0; y < this.yLength; y++) {
+            nullDataSet[y] = new Array(this.xLength).fill(null);
+        }
+        return nullDataSet;
+    };
+
+    this.normalizeData = function(rawData) {
+        var normalizedData = this.getNullDataSet();
+        var yOffset = Math.floor((normalizedData.length - rawData.length) / 2);
+        var xOffset = Math.floor((normalizedData[0].length - rawData[0].length) / 2);
+
+        for(var y = 0; y < rawData.length; y++) {
+            for(var x = 0; x < rawData[y].length; x++) {
+                normalizedData[y + yOffset][x + xOffset] = rawData[y][x];
+            }
+        }
+
+        return normalizedData;
     };
 
     this.clean = function() {
