@@ -55,7 +55,7 @@ var MorphEffect = {
         this.index;
         this.func = function (pixatronData, morphData) {
 
-            if(this.index === undefined) {
+            if (this.index === undefined) {
                 this.index = (pixatronData.length * pixatronData[0].length) / 2;
             }
 
@@ -114,7 +114,7 @@ var MorphEffect = {
         this.index;
         this.func = function (pixatronData, morphData) {
 
-            if(this.index === undefined) {
+            if (this.index === undefined) {
                 this.index = (pixatronData.length * pixatronData[0].length) / 2;
             }
 
@@ -132,8 +132,6 @@ var MorphEffect = {
     LIFE: function () {
         this.index = 0;
         this.func = function (pixatronData, morphData, pixatron) {
-
-            var color = '#7fa5e2';
 
             var nextGen = pixatron.getNullDataSet();
 
@@ -170,12 +168,12 @@ var MorphEffect = {
                     }
 
                     if (!pixatronData[y][x] && neighbours === 3) {
-                        nextGen[y][x] = color;
+                        nextGen[y][x] = '#7142f4';
                     } else if (pixatronData[y][x]) {
                         if (neighbours < 2 || neighbours > 3) {
                             nextGen[y][x] = null;
                         } else {
-                            nextGen[y][x] = color;
+                            nextGen[y][x] = '#7fa5e2';
                         }
                     }
                 }
