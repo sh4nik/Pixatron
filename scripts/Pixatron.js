@@ -2,12 +2,11 @@
 
 var Pixatron = function (options) {
 
-    createjs.Ticker.setFPS(options.fps || 30);
-
+    this.fps = options.fps || 30;
     this.xLength = options.width;
     this.yLength = options.height;
-    this.padding = 0.08;
-    this.cellRounding = 0.08;
+    this.padding = options.padding || 0.08;
+    this.cellRounding = options.rounding || 0.08;
     this.data;
     this.morphHandler = new MorphHandler(this);
     this.morphQueue = [];
@@ -73,6 +72,8 @@ var Pixatron = function (options) {
     };
 
     this.morph = function (morphEffect, morphData, ticksToPause) {
+
+        createjs.Ticker.setFPS(this.fps);
 
         this.morphQueue.push({
             morphEffect: new morphEffect(),
