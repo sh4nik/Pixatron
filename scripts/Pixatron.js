@@ -1,5 +1,6 @@
 "use strict";
 
+//MorphicCell
 var Pixatron = function (options) {
 
     this.fps = options.fps || 30;
@@ -7,6 +8,8 @@ var Pixatron = function (options) {
     this.yLength = options.height;
     this.padding = options.padding || 0.08;
     this.cellRounding = options.rounding || 0.08;
+    this.shadows = options.shadows || null;
+    this.border = options.border || null;
     this.data;
     this.morphHandler = new MorphHandler(this);
     this.morphQueue = [];
@@ -33,8 +36,8 @@ var Pixatron = function (options) {
         this.cellPadding = this.cellWidth * this.padding;
 
         this.canvas.id = this.canvasName;
-        this.canvas.width = this.container.offsetWidth;
-        this.canvas.height = this.container.offsetHeight;
+        this.canvas.width = this.container.offsetWidth + this.shadows;
+        this.canvas.height = this.container.offsetHeight + this.shadows;
 
         this.container.appendChild(this.canvas);
         this.stage = new createjs.Stage(this.canvasName);
@@ -49,6 +52,9 @@ var Pixatron = function (options) {
             for(var x = 0; x < row.length; x++) {
                     if (row[x]) {
                         var cell = new createjs.Shape();
+                        if(this.border) {
+                             cell.graphics.setStrokeStyle(this.border).beginStroke("rgba(0,0,0,1)");
+                         }
                         cell.graphics
                             .beginFill(row[x])
                             .drawRoundRect(
@@ -58,6 +64,9 @@ var Pixatron = function (options) {
                             this.cellHeight - (this.cellPadding * 2),
                             this.cellWidth * this.cellRounding
                             );
+                         if(this.shadows) {
+                             cell.shadow = new createjs.Shadow('#000', this.shadows, this.shadows, this.shadows);
+                         }
                         this.stage.addChild(cell);
                 }
             }

@@ -7,6 +7,7 @@ var MorphHandler = function (pixatron) {
     };
 
     function _tick() {
+        console.log(createjs.Ticker.getMeasuredFPS());
         if (pixatron.morphQueue.length === 0) {
             createjs.Ticker.removeEventListener("tick", _tick);
             return;

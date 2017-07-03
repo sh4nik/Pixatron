@@ -6,6 +6,7 @@
     <script src="scripts/MorphHandler.js"></script>
     <script src="scripts/MorphEffect.js"></script>
     <script src="scripts/Pixatron.js"></script>
+    <script src="scripts/rle.js"></script>
 
     <style>
         body {
@@ -14,8 +15,8 @@
 
 
         .workspace {
-            width: 150px;
-            height: 150px;
+            width: 1000px;
+            height: 1000px;
             margin-left: auto;
             margin-right: auto;
             margin-top: 100px;
@@ -26,23 +27,20 @@
         setTimeout(function () {
 
             var pixatron = new Pixatron({
-                width: 8,
-                height: 8,
+                width: 320,
+                height: 320,
                 fps: 64,
-                shadows: 2,
-                border: 1
+                rounding: 0,
+                padding: 0,
+                border: 0.3,
+                shadows: 0.5
             });
 
             pixatron.create("workspace");
 
-            pixatron.morph(MorphEffect.REPLACE_DOWN_TO_UP, insight);
-            pixatron.morph(MorphEffect.REPLACE_UP_TO_DOWN, insightd, 32);
-            pixatron.morph(MorphEffect.BLACK_OUT_UP_TO_DOWN);
-            pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, accello, 128);
-            pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, creeper, 32);
-            pixatron.morph(MorphEffect.REPLACE_UP_TO_DOWN, face);
-			pixatron.morph(MorphEffect.REPLACE_MIDDLE_OUT, rex, 128);
-            pixatron.morph(MorphEffect.BLACK_OUT_MIDDLE_OUT);
+            pixatron.draw(racer);
+
+            pixatron.morph(MorphEffect.LIFE);
 
         }, 0);
     </script>

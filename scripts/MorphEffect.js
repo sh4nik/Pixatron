@@ -168,12 +168,12 @@ var MorphEffect = {
                     }
 
                     if (!pixatronData[y][x] && neighbours === 3) {
-                        nextGen[y][x] = '#7142f4';
+                        nextGen[y][x] = '#666'; //'#7142f4'
                     } else if (pixatronData[y][x]) {
                         if (neighbours < 2 || neighbours > 3) {
                             nextGen[y][x] = null;
                         } else {
-                            nextGen[y][x] = '#7fa5e2';
+                            nextGen[y][x] = '#f74040'; //'#fff'
                         }
                     }
                 }
@@ -182,7 +182,7 @@ var MorphEffect = {
             pixatron.data = nextGen;
 
             this.index++;
-            return this.index < 1200;
+            return this.index < 100000;
         };
     }
 
